@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>2014-04-15_-_DataSEDML</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>Accessing Data SED-ML</h2>
+<p>We have been discussing for a long time how to provide access to (experimental) data sources in SED-ML, ultimately this culminated in the google document: </p>
+<p><a href="https://docs.google.com/document/d/1rrs0fYuKFr4fgL1b7eGwSnaLhRPW6NdXwAaJY0ZN_WY/">https://docs.google.com/document/d/1rrs0fYuKFr4fgL1b7eGwSnaLhRPW6NdXwAaJY0ZN_WY/</a></p>
+<p>left to do was to gather these thoughts and try them out in a prototype. Here I describe one such prototype and the specific extensions to SED-ML that would be needed to make it work. (And that hopefully could be released in an L1V3). </p>
+<h3>The data format</h3>
+<p>Here the decision was made by the community at HARMONY 2013, where it was decided that the data format for accessing data in SED-ML should be NuML. </p>
+<h3>The Syntax</h3>
+<h4>The extended <code>&lt;sedML&gt;</code> element</h4>
+<p>The top level <code>&lt;sedML&gt;</code> element is extended by a <code>&lt;listOfExperimentalData&gt;</code> that can contain one or more <code>&lt;dataDescription&gt;</code> elements.</p>
+<h4>The <code>&lt;dataDescription&gt;</code> element</h4>
+<p>The new class <code>&lt;dataDescription&gt;</code> references a file containing data points, along with a description on how to access that file, and what information to extract from it. The <code>&lt;dataDescription&gt;</code> class introduces four attributes <code>id</code>, <code>name</code>, <code>source</code>, and <code>type</code>. As well as the elements <code>&lt;dimensionDescription&gt;</code> and <code>&lt;listOfDataSources&gt;</code>. </p>
+<h5>The <code>id</code> and <code>name</code> attributes</h5>
+<p>The attribute <code>id</code> of type SId is meant to uniquely identify the data description element, while the optional <code>name</code> attribute of type string, is there to provide a human readable representation if desired. </p>
+<h5>The <code>source</code> attribute</h5>
+<p>Analog to how the <code>source</code> attribute on the <code>&lt;model&gt;</code> is handled, this attribute provides a location to a data file. The same sources as for the <code>&lt;model&gt;</code> element are to be allowed: be it a local file system, a relative link or an online resource.</p>
+<h5>The optional <code>type</code> attribute</h5>
+<p>Since we decided that the data format of all SED-ML descriptions ought to be NuML, we might not need this attribute anymore, so I left it optional for now. It would be an identifier for the data format, chosen from a controlled vocabulary, analog to how we list the supported model languages in <code>urn:sedml:language</code>.  </p>
+<pre><code>    &lt;dataDescription id=&quot;Data1&quot; name=&quot;Oscli Time Course Data&quot; 
+     source=&quot;http://svn.code.sf.net/p/libsedml/code/trunk/Samples/data/oscli.numl&quot; 
+     type=&quot;urn:sedml:format:numl&quot;&gt;
+     ...
+    &lt;/dataDescription&gt;
+</code></pre>
+
+<h5>The <code>&lt;dimensionDescription&gt;</code> element</h5>
+<p>The <code>&lt;dimensionDescription&gt;</code> element is just the data description from the NuML file. Consider for example: </p>
+<pre><code>    &lt;dimensionDescription&gt;
+        &lt;compositeDescription indexType=&quot;double&quot; id=&quot;time&quot; name=&quot;time&quot; 
+          xmlns=&quot;http://www.numl.org/numl/level1/version1&quot;&gt;
+        &lt;compositeDescription indexType=&quot;string&quot; id=&quot;SpeciesIds&quot; name=&quot;SpeciesIds&quot;&gt;
+            &lt;atomicDescription valueType=&quot;double&quot; name=&quot;Concentration&quot; /&gt;
+        &lt;/compositeDescription&gt;
+        &lt;/compositeDescription&gt;
+    &lt;/dimensionDescription&gt;
+</code></pre>
+
+<p>Here we have a nested NuML <code>&lt;componentDescription&gt;</code> with <code>time</code> spanning one dimension and <code>SpeciesIds</code> another. This two dimensional space is then filled with double values representing concentrations. </p>
+<h5>The <code>&lt;listOfDataSources&gt;</code> element</h5>
+<p>The <code>&lt;listOfDataSources&gt;</code> contains one or more <code>&lt;dataSource&gt;</code> elements that are then used in the remainder of the SED-ML document. </p>
+<h3>The <code>&lt;dataSource&gt;</code> element</h3>
+<p>The <code>&lt;dataSource&gt;</code> element now extracts junks out of the data file provided in the <code>&lt;dataDescription&gt;</code> element. The element has the attributes: <code>id</code>, <code>name</code>, <code>indexSet</code> and a number of <code>&lt;slice&gt;</code> elements. </p>
+<h5>The <code>id</code> and <code>name</code> attributes</h5>
+<p>The attribute <code>id</code> of type SId is meant to uniquely identify the data description element, while the optional <code>name</code> attribute of type string, is there to provide a human readable representation if desired. </p>
+<h5>The <code>indexSet</code> attribute</h5>
+<p>Since data elements in NuML are either values, or indices, the <code>&lt;dataSource&gt;</code> element needs two ways of addressing those elements. The <code>indexSet</code> attribute allows to address all indices privided by NuML elements with <code>indexType</code>. So for example in for the <code>time</code> componentDescription above, a <code>dataSource</code>: </p>
+<pre><code>        &lt;dataSource id=&quot;dataTime&quot; indexSet=&quot;time&quot; /&gt;
+</code></pre>
+
+<p>would extract the set of all time points stored in the index. Similarly: </p>
+<pre><code>        &lt;dataSource id=&quot;allIds&quot; indexSet=&quot;SpeciesIds&quot; /&gt;
+</code></pre>
+
+<p>would extract all the species id strings stored in that index set. Valid values for <code>indexSet</code> are all NuML Id elements declared in the <code>&lt;dimensionDescription&gt;</code>. If the <code>indexSet</code> attribute is specified the corresponding <code>&lt;dataSource&gt;</code> may not define any <code>&lt;slice&gt;</code> elements.  </p>
+<h4>The <code>&lt;slice&gt;</code> elements</h4>
+<p>If a <code>&lt;dataSource&gt;</code> does not define the <code>indexSet</code> attribute, it will contain <code>&lt;slice&gt;</code> elements. Each slice removes one dimension from the data hypercube. For that the <code>&lt;slice&gt;</code> element defines two attributes: <code>reference</code> and <code>value</code>. </p>
+<h5>The <code>reference</code> attribute</h5>
+<p>The <code>reference</code> attribute references one of the indices described in the <code>&lt;dimensionDescription&gt;</code>. In the example above, valid values would be: <code>time</code> and <code>SpeciesIds</code>. </p>
+<h5>The <code>value</code> attribute</h5>
+<p>The <code>value</code> attribute now takes the value of a specific index in the referenced set of indices. For example: </p>
+<pre><code>        &lt;dataSource id=&quot;dataS1&quot;&gt;
+          &lt;slice reference=&quot;SpeciesIds&quot; value=&quot;S1&quot; /&gt;
+        &lt;/dataSource&gt;
+</code></pre>
+
+<p>would slice isolate the index set of all species ids specified, to only the single entry for <code>S1</code>, however over the full range of the <code>time</code> index set. As stated before, there could be multiple slice elements present, so it would be feasible to slice the data again, to obtain a single time point, for example the initial one: </p>
+<pre><code>        &lt;dataSource id=&quot;dataS1&quot;&gt;
+          &lt;slice reference=&quot;time&quot; value=&quot;0&quot; /&gt;
+          &lt;slice reference=&quot;SpeciesIds&quot; value=&quot;S1&quot; /&gt;
+        &lt;/dataSource&gt;
+</code></pre>
+
+<h4>Using the <code>dataSource</code>s</h4>
+<p>Once the <code>&lt;dataSource&gt;</code> elements are defined the idea is, that they can be reused anywhere in the SED-ML Description. In the current prototype I have implemented it such, that they can occur within the <code>&lt;listOfVariables&gt;</code> of <code>&lt;dataGenerators&gt;</code>, <code>&lt;computeChange&gt;</code> or <code>&lt;setValue&gt;</code>. Here an example that re-uses the above data source <code>dataS1</code>: </p>
+<pre><code>&lt;dataGenerator id=&quot;dgDataS1&quot; name=&quot;S1 (data)&quot;&gt;
+  &lt;listOfVariables&gt;
+    &lt;variable id=&quot;varS1&quot; modelReference=&quot;model1&quot; target=&quot;#dataS1&quot; /&gt;
+  &lt;/listOfVariables&gt;
+  &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+    &lt;ci&gt; varS1 &lt;/ci&gt;
+  &lt;/math&gt;
+&lt;/dataGenerator&gt;
+</code></pre>
+
+<p>This represents a change from L1V1 and L1V2, in which we would always have used a <code>taskReference</code> for a <code>&lt;variable&gt;</code> in a data generator. </p>
+<p>NOTE: to indicate that the <code>target</code> is an entity defined within the SED-ML description I here use a  hashtag (<code>#</code>) with the id.    </p>
+<p>NOTE: In this example I choose to use the <code>modelReference</code> instead. This is mainly to facilitate a mapping of the data encode in the NuML document with a given model. One example for this would be for example when the <code>indexType</code> of a <code>&lt;componentDescription&gt;</code> would be an xpath expression. </p>
+<h3>Outlook</h3>
+<p>From this point on, we really need to prototype more, and try to exchange descriptions that use this approach. It might be better suitable to introduce additional convenience classes such as a <code>&lt;dataRange&gt;</code> that would derive from <code>&lt;range&gt;</code>, or a construct to more readily parameterize a Model with initial values from a <code>&lt;dataDescription&gt;</code> (the one could just describe an index set to be used that contains the xpath expressions to the elements to be changed, together with a set of slices, to pick out a specific <em>row</em> from the data file).  </p>
+<h3>An Example</h3>
+<p>Here an example that demonstrates the use of the datasources in a basic description. Here a given model is simulated (using a uniform time course simulation), that simulation result is plotted in one plot, a second plot obtains a stored result (using the datasources), extract the 'S1' and 'time' column from it and renders it.</p>
+<p><img src="http://svn.code.sf.net/p/libsedml/code/trunk/Samples/sed-ml%20files/proposed/experimental-data.png" alt="Image" /></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!-- Written by libSedML v1.1.5198.25027 see http://libsedml.sf.net --&gt;
+&lt;sedML level=&quot;1&quot; version=&quot;2&quot; xmlns=&quot;http://sed-ml.org/sed-ml/level1/version2&quot;&gt;
+
+&lt;listOfExperimentalData&gt;
+    &lt;dataDescription id=&quot;Data1&quot; name=&quot;Oscli Time Course Data&quot; 
+     source=&quot;http://svn.code.sf.net/p/libsedml/code/trunk/Samples/data/oscli.numl&quot; 
+     type=&quot;urn:sedml:format:numl&quot;&gt;
+
+    &lt;dimensionDescription&gt;
+        &lt;compositeDescription indexType=&quot;double&quot; id=&quot;time&quot; name=&quot;time&quot; 
+          xmlns=&quot;http://www.numl.org/numl/level1/version1&quot;&gt;
+        &lt;compositeDescription indexType=&quot;string&quot; id=&quot;SpeciesIds&quot; name=&quot;SpeciesIds&quot;&gt;
+            &lt;atomicDescription valueType=&quot;double&quot; name=&quot;Concentrations&quot; /&gt;
+        &lt;/compositeDescription&gt;
+        &lt;/compositeDescription&gt;
+    &lt;/dimensionDescription&gt;
+
+    &lt;listOfDataSources&gt;
+        &lt;dataSource id=&quot;dataS1&quot;&gt;
+        &lt;slice reference=&quot;SpeciesIds&quot; value=&quot;S1&quot; /&gt;
+        &lt;/dataSource&gt;
+        &lt;dataSource id=&quot;dataTime&quot; indexSet=&quot;time&quot; /&gt;
+    &lt;/listOfDataSources&gt;
+    &lt;/dataDescription&gt;
+&lt;/listOfExperimentalData&gt;
+
+&lt;listOfSimulations&gt;
+    &lt;uniformTimeCourse id=&quot;sim1&quot; initialTime=&quot;0&quot; 
+     outputStartTime=&quot;0&quot; outputEndTime=&quot;10&quot; numberOfPoints=&quot;100&quot;&gt;
+      &lt;algorithm kisaoID=&quot;KISAO:0000019&quot;&gt;
+        &lt;listOfAlgorithmParameters&gt;
+        &lt;algorithmParameter kisaoID=&quot;KISAO:0000209&quot; value=&quot;1E-06&quot; /&gt;
+        &lt;algorithmParameter kisaoID=&quot;KISAO:0000211&quot; value=&quot;1E-12&quot; /&gt;
+        &lt;algorithmParameter kisaoID=&quot;KISAO:0000415&quot; value=&quot;10000&quot; /&gt;
+        &lt;/listOfAlgorithmParameters&gt;
+      &lt;/algorithm&gt;
+    &lt;/uniformTimeCourse&gt;
+&lt;/listOfSimulations&gt;
+&lt;listOfModels&gt;
+    &lt;model id=&quot;model1&quot; language=&quot;urn:sedml:language:sbml&quot; 
+     source=&quot;http://sourceforge.net/p/libsedml/code/119/tree/trunk/Samples/models/oscli.xml?format=raw&quot; /&gt;
+&lt;/listOfModels&gt;
+&lt;listOfTasks&gt;
+    &lt;task id=&quot;task1&quot; modelReference=&quot;model1&quot; simulationReference=&quot;sim1&quot; /&gt;
+&lt;/listOfTasks&gt;
+&lt;listOfDataGenerators&gt;
+    &lt;dataGenerator id=&quot;time_1&quot; name=&quot;time&quot;&gt;
+    &lt;listOfVariables&gt;
+        &lt;variable id=&quot;time&quot; name=&quot;time&quot; taskReference=&quot;task1&quot; symbol=&quot;urn:sedml:symbol:time&quot; /&gt;
+    &lt;/listOfVariables&gt;
+    &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+        &lt;ci&gt; time &lt;/ci&gt;
+    &lt;/math&gt;
+    &lt;/dataGenerator&gt;
+    &lt;dataGenerator id=&quot;S1_1&quot; name=&quot;S1&quot;&gt;
+    &lt;listOfVariables&gt;
+        &lt;variable id=&quot;S1&quot; name=&quot;S1&quot; taskReference=&quot;task1&quot; 
+         target=&quot;/sbml:sbml/sbml:model/sbml:listOfSpecies/sbml:species[@id='S1']&quot; /&gt;
+    &lt;/listOfVariables&gt;
+    &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+        &lt;ci&gt; S1 &lt;/ci&gt;
+    &lt;/math&gt;
+    &lt;/dataGenerator&gt;
+    &lt;dataGenerator id=&quot;S2_1&quot; name=&quot;S2&quot;&gt;
+    &lt;listOfVariables&gt;
+        &lt;variable id=&quot;S2&quot; name=&quot;S2&quot; taskReference=&quot;task1&quot; 
+         target=&quot;/sbml:sbml/sbml:model/sbml:listOfSpecies/sbml:species[@id='S2']&quot; /&gt;
+    &lt;/listOfVariables&gt;
+    &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+        &lt;ci&gt; S2 &lt;/ci&gt;
+    &lt;/math&gt;
+    &lt;/dataGenerator&gt;
+    &lt;dataGenerator id=&quot;dgDataS1&quot; name=&quot;S1 (data)&quot;&gt;
+    &lt;listOfVariables&gt;
+        &lt;variable id=&quot;varS1&quot; modelReference=&quot;model1&quot; target=&quot;#dataS1&quot; /&gt;
+    &lt;/listOfVariables&gt;
+    &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+        &lt;ci&gt; varS1 &lt;/ci&gt;
+    &lt;/math&gt;
+    &lt;/dataGenerator&gt;
+    &lt;dataGenerator id=&quot;dgDataTime&quot; name=&quot;Time&quot;&gt;
+    &lt;listOfVariables&gt;
+        &lt;variable id=&quot;varTime&quot; modelReference=&quot;model1&quot; target=&quot;#dataTime&quot; /&gt;
+    &lt;/listOfVariables&gt;
+    &lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;
+        &lt;ci&gt; varTime &lt;/ci&gt;
+    &lt;/math&gt;
+    &lt;/dataGenerator&gt;
+&lt;/listOfDataGenerators&gt;
+&lt;listOfOutputs&gt;
+    &lt;plot2D id=&quot;plot1&quot; name=&quot;Time Course (Oscli)&quot;&gt;
+    &lt;listOfCurves&gt;
+        &lt;curve id=&quot;curve1&quot; logX=&quot;false&quot; logY=&quot;false&quot; xDataReference=&quot;time_1&quot; yDataReference=&quot;S1_1&quot; /&gt;
+        &lt;curve id=&quot;curve2&quot; logX=&quot;false&quot; logY=&quot;false&quot; xDataReference=&quot;time_1&quot; yDataReference=&quot;S2_1&quot; /&gt;
+    &lt;/listOfCurves&gt;
+    &lt;/plot2D&gt;
+    &lt;plot2D id=&quot;plot2&quot; name=&quot;Data (Oscli)&quot;&gt;
+    &lt;listOfCurves&gt;
+        &lt;curve id=&quot;curve3&quot; logX=&quot;false&quot; logY=&quot;false&quot; xDataReference=&quot;dgDataTime&quot; yDataReference=&quot;dgDataS1&quot; /&gt;
+    &lt;/listOfCurves&gt;
+    &lt;/plot2D&gt;
+&lt;/listOfOutputs&gt;
+&lt;/sedML&gt;
+</code></pre>
+
+<hr />
+<p>4/15/2014 11:29:29 PM Frank T. Bergmann</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
