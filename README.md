@@ -24,7 +24,7 @@ The top level `<sedML>` element is extended by a `<listOfDataSets>` that can con
 The new class `<dataSet>` references a file containing data points, along with a description on how to access that file, and what information to extract from it. The `<dataSet>` class introduces four attributes `id`, `name`, `source`, and `type`. As well as the elements `<dimensionDescription>` and `<listOfDataSources>`. 
 
 ##### The `id` and `name` attributes
-The attribute `id` of type SId is meant to uniquely identify the dataset element, while the optional `name` attribute of type string, is there to provide a human readable representation if desired. 
+The attribute `id` of type SId is meant to uniquely identify the `<dataSet>` element, while the optional `name` attribute of type string, is there to provide a human readable representation if desired. 
 
 ##### The `source` attribute
 Analog to how the `source` attribute on the `<model>` is handled, this attribute provides a location to a data file. The same sources as for the `<model>` element are to be allowed: be it a local file system, a relative link or an online resource.
