@@ -18,13 +18,13 @@ Here the decision was made by the community at HARMONY 2013, where it was decide
 ### The Syntax
 
 #### The extended `<sedML>` element
-The top level `<sedML>` element is extended by a `<listOfExperimentalData>` that can contain one or more `<dataDescription>` elements.
+The top level `<sedML>` element is extended by a `<listOfDataSets>` that can contain one or more `<dataSet>` elements.
 
-#### The `<dataDescription>` element
-The new class `<dataDescription>` references a file containing data points, along with a description on how to access that file, and what information to extract from it. The `<dataDescription>` class introduces four attributes `id`, `name`, `source`, and `type`. As well as the elements `<dimensionDescription>` and `<listOfDataSources>`. 
+#### The `<dataSet>` element
+The new class `<dataSet>` references a file containing data points, along with a description on how to access that file, and what information to extract from it. The `<dataSet>` class introduces four attributes `id`, `name`, `source`, and `type`. As well as the elements `<dimensionDescription>` and `<listOfDataSources>`. 
 
 ##### The `id` and `name` attributes
-The attribute `id` of type SId is meant to uniquely identify the data description element, while the optional `name` attribute of type string, is there to provide a human readable representation if desired. 
+The attribute `id` of type SId is meant to uniquely identify the dataset element, while the optional `name` attribute of type string, is there to provide a human readable representation if desired. 
 
 ##### The `source` attribute
 Analog to how the `source` attribute on the `<model>` is handled, this attribute provides a location to a data file. The same sources as for the `<model>` element are to be allowed: be it a local file system, a relative link or an online resource.
@@ -32,11 +32,11 @@ Analog to how the `source` attribute on the `<model>` is handled, this attribute
 ##### The optional `type` attribute
 Since we decided that the data format of all SED-ML descriptions ought to be NuML, we might not need this attribute anymore, so I left it optional for now. It would be an identifier for the data format, chosen from a controlled vocabulary, analog to how we list the supported model languages in `urn:sedml:language`.  
 
-		<dataDescription id="Data1" name="Oscli Time Course Data" 
+		<dataSet id="Data1" name="Oscli Time Course Data" 
 	     source="http://svn.code.sf.net/p/libsedml/code/trunk/Samples/data/oscli.numl" 
 	     type="urn:sedml:format:numl">
 	     ...
-		</dataDescription>
+		</dataSet>
   
 ##### The `<dimensionDescription>` element
 The `<dimensionDescription>` element is just the data description from the NuML file. Consider for example: 
@@ -56,7 +56,7 @@ Here we have a nested NuML `<componentDescription>` with `time` spanning one dim
 The `<listOfDataSources>` contains one or more `<dataSource>` elements that are then used in the remainder of the SED-ML document. 
 
 #### The `<dataSource>` element
-The `<dataSource>` element now extracts junks out of the data file provided in the `<dataDescription>` element. The element has the attributes: `id`, `name`, `indexSet` and a number of `<slice>` elements. 
+The `<dataSource>` element now extracts junks out of the data file provided in the `<dataSet>` element. The element has the attributes: `id`, `name`, `indexSet` and a number of `<slice>` elements. 
 
 ##### The `id` and `name` attributes
 The attribute `id` of type SId is meant to uniquely identify the data description element, while the optional `name` attribute of type string, is there to provide a human readable representation if desired. 
@@ -111,7 +111,7 @@ NOTE: to indicate that the `target` is an entity defined within the SED-ML descr
 NOTE: In this example I choose to use the `modelReference` instead. This is mainly to facilitate a mapping of the data encode in the NuML document with a given model. One example for this would be for example when the `indexType` of a `<componentDescription>` would be an xpath expression. 
   
 ### Outlook
-From this point on, we really need to prototype more, and try to exchange descriptions that use this approach. It might be better suitable to introduce additional convenience classes such as a `<dataRange>` that would derive from `<range>`, or a construct to more readily parameterize a Model with initial values from a `<dataDescription>` (the one could just describe an index set to be used that contains the xpath expressions to the elements to be changed, together with a set of slices, to pick out a specific _row_ from the data file).  
+From this point on, we really need to prototype more, and try to exchange descriptions that use this approach. It might be better suitable to introduce additional convenience classes such as a `<dataRange>` that would derive from `<range>`, or a construct to more readily parameterize a Model with initial values from a `<dataSet>` (the one could just describe an index set to be used that contains the xpath expressions to the elements to be changed, together with a set of slices, to pick out a specific _row_ from the data file).  
 
 
 ### An Example
@@ -125,8 +125,8 @@ Here an example that demonstrates the use of the datasources in a basic descript
 	<!-- Written by libSedML v1.1.5198.25027 see http://libsedml.sf.net -->
 	<sedML level="1" version="2" xmlns="http://sed-ml.org/sed-ml/level1/version2">
 
-	<listOfExperimentalData>
-		<dataDescription id="Data1" name="Oscli Time Course Data" 
+	<listOfDataSets>
+		<dataSet id="Data1" name="Oscli Time Course Data" 
 	     source="http://svn.code.sf.net/p/libsedml/code/trunk/Samples/data/oscli.numl" 
 	     type="urn:sedml:format:numl">
 
@@ -146,7 +146,7 @@ Here an example that demonstrates the use of the datasources in a basic descript
 			<dataSource id="dataTime" indexSet="time" />
 		</listOfDataSources>
 		</dataDescription>
-	</listOfExperimentalData>
+	</listOfDataSets>
 
 	<listOfSimulations>
 		<uniformTimeCourse id="sim1" initialTime="0" 
